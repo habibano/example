@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input練習</title>
+</head>
+<body>
+
+<h3>問い合わせフォーム</h3>
+<form action="/PracticeServer/exRequestFormServlet" method="post">
+	氏名：<input type="text" name="name"><br>
+	性別：
+	男<input type="radio" name="jender" value="0">
+	女<input type="radio" name="jender" value="1"><br>
+<!--	問い合わせ種別：-->
+<!--    <select name="requestType">-->
+<!--      <option value="aboutCompany">会社について</option>-->
+<!--      <option value="aboutProduct">製品について</option>-->
+<!--      <option value="aboutSupport">アフターサポートについて</option>-->
+<!--    </select><br>-->
+<!--	問い合わせ内容：<textarea name="requestArea">問い合わせ内容を入力ください。</textarea><br>-->
+<!--	メールアドレス：<input type="email" id="email" pattern=".+@example\.com" size="30"><br>-->
+ 	<input type="submit" value="送信">
+</form>
+
+</body>
+</html>

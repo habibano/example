@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ForwardSampleServlet</display-name>
+    <servlet-name>ForwardSampleServlet</servlet-name>
+    <servlet-class>servlet.ForwardSampleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForwardSampleServlet</servlet-name>
+    <url-pattern>/ForwardSampleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>exRedirectServlet</display-name>
+    <servlet-name>exRedirectServlet</servlet-name>
+    <servlet-class>servlet.exRedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exRedirectServlet</servlet-name>
+    <url-pattern>/exRedirectServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

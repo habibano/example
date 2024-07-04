@@ -31,13 +31,17 @@ public class exRequestFormServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String jender = request.getParameter("jender");
-		String msg="";
+		String requestType = request.getParameter("requestType");
+		String requestArea = request.getParameter("requestArea");
+		String msg1="";
+		String msg2="";
 		String errorMsg1="";
 		String errorMsg2="";
 		
 		if(name == null || name.length() == 0) {
 			errorMsg1 = "名前が未入力です";
 		}
+		
 		if(jender == null || jender.length() == 0) {
 			errorMsg2 = "性別が未選択です";
 		}else {
@@ -47,11 +51,14 @@ public class exRequestFormServlet extends HttpServlet {
 				jender = "女性";
 			}
 		}
-		msg = name + "さん（" + jender +"）を登録しました。";
-
+		
+		
+		msg1 = name + "さん（" + jender +"）を登録しました。";
 		if(errorMsg1.length() != 0 || errorMsg2.length() != 0) {
-			msg = errorMsg1 + "<br>" + errorMsg2;
+			msg1 = errorMsg1 + "<br>" + errorMsg2;
 		}
+		
+		msg2 = requestType + "<br>" + requestArea;
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -63,7 +70,8 @@ public class exRequestFormServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>doPostが呼び出されました</h1>");
-		out.println("<p>" + msg + "</p>");
+		out.println("<p>" + msg1 + "</p><br>");
+		out.println("<p>" + msg2 + "</p>");
 		out.println("</body>");
 		out.println("</html>");
 	}

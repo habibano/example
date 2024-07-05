@@ -39,4 +39,14 @@
     <servlet-name>exRedirectServlet</servlet-name>
     <url-pattern>/exRedirectServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HealthCheck</display-name>
+    <servlet-name>HealthCheck</servlet-name>
+    <servlet-class>servlet.HealthCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HealthCheck</servlet-name>
+    <url-pattern>/HealthCheck</url-pattern>
+  </servlet-mapping>
 </web-app>

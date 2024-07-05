@@ -17,56 +17,58 @@ import logic.RegisterUserLogic;
 public class RegisterUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * ユーザ登録画面
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String forwardPath = "";
+		String action = null;
+
 		request.setCharacterEncoding("UTF-8");
-		String action = request.getParameter("action");
+		action = request.getParameter("action");
 		
+		//初回呼び出し時
 		if(action == null) {
-			action = "";
+			forwardPath = "/WebContent/registerForm.jsp";
 		}
+
+		//ユーザ登録時
+		else if(action.equals("done")) {
+			forwardPath = "/WEB-INF/jsp/registerDone.jsp";
 		
-		if(action.equals("done")) {
-			
-			//Sessionスコープからユーザ情報を取得
-			HttpSession session = request.getSession();//これ毎回必要なのか？
-			User user = (User)session.getAttribute("user");
+			//セッションインスタンスからユーザ情報を取得
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
 			
 			//ユーザ登録処理
-			RegisterUserLogic regUserLogic = new RegisterUserLogic();
-			regUserLogic.execute(user);
+			RegisterUserLogic logic = new RegisterUserLogic();
+			logic.execute(user);
+
+			//セッションインスタンスの破棄
+			session.removeAttribute("user");
 			
-			//ユーザ登録完了画面をフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerDone.jsp");
-			dispatcher.forward(request, response);
-			
-		}else{//action="back"を想定
-			//ユーザ登録画面をフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WebContent/registerForm.jsp");
-			dispatcher.forward(request, response);
+		}else{
+			//拡張用
 		}
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+		dispatcher.forward(request, response);
+	
 	}
 
-	/**
-	 * ユーザ登録確認画面
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//ユーザインスタンスに基本情報を保存
-		User user = new User();
+		//リクエストされたユーザ情報を元にインスタンス生成
 		request.setCharacterEncoding("UTF-8");
-		user.setId(request.getParameter("id"));
-		user.setPassword(request.getParameter("password"));
-		user.setName(request.getParameter("name"));
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		User user = new User(id, password, name);
 		
-		//セッションスコープにユーザインスタンスを保存
+		//セッションインスタンス生成、ユーザ情報の一時保存
 		HttpSession session = request.getSession();
 		session.setAttribute("user",user);
 		
-		//ユーザ登録画面をフォワード
+		//ユーザ登録の確認画面へ遷移
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerConfirm.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -8,5 +8,6 @@
 </head>
 <body>
 <p>ユーザ登録が完了しました</p>
+<a href="/PracticeServer/RegisterUser">戻る</a>
 </body>
 </html>

@@ -63,8 +63,7 @@ public class RegisterUser extends HttpServlet {
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		User user = new User(id, password, name);
-		
-		//セッションインスタンス生成、ユーザ情報の一時保存
+        //セッションインスタンス生成、ユーザ情報の一時保存
 		HttpSession session = request.getSession();
 		session.setAttribute("user",user);
 		

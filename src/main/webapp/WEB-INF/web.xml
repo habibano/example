@@ -59,4 +59,14 @@
     <servlet-name>RegisterUser</servlet-name>
     <url-pattern>/RegisterUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HiroakiSiteControl</display-name>
+    <servlet-name>HiroakiSiteControl</servlet-name>
+    <servlet-class>servlet.HiroakiSiteControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HiroakiSiteControl</servlet-name>
+    <url-pattern>/HiroakiSiteControl</url-pattern>
+  </servlet-mapping>
 </web-app>

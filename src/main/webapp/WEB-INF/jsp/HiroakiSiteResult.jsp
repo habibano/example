@@ -17,9 +17,11 @@
 <h1>こんにちは</h1>
 <p>アンケート：あなたは犬派か猫派か</p>
 <p>アンケート結果：</p>
-<a>犬派</a>
+<form>
+<a href="/PracticeServer/HiroakiSiteControl?action=dog">犬派</a>
 <p>投票数：<%= dogCnt %></p>
-<a>猫派</a>
+<a href="/PracticeServer/HiroakiSiteControl?action=cat">猫派</a>
 <p>投票数：<%= catCnt %></p>
+</form>
 </body>
 </html>
